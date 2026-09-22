@@ -1,0 +1,411 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #111; /* Very dark gray for sharp contrast */
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Floating Header (Pill-shaped, glassmorphism) */
+.floating-header {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+    background: rgba(17, 17, 17, 0.7); /* Background gelap transparan */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 25px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Class khusus untuk halaman "Tentang" agar teksnya putih jelas */
+.solid-header {
+    background: rgba(17, 17, 17, 0.9);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.floating-header .logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #fff;
+}
+
+.contact-btn {
+    background: #fff;
+    color: #111;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.solid-header .contact-btn {
+    background: #e59325;
+    color: #fff;
+}
+
+.contact-btn:hover {
+    background: #ddd;
+}
+.solid-header .contact-btn:hover {
+    background: #cf841f;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Background dengan gambar kincir/alam (Bisa diganti nanti) */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient overlay + Nature Unsplash photo */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.hero-content h1 {
+    font-size: 13vw; /* Huge Typography */
+    font-weight: 600;
+    letter-spacing: -4px;
+    line-height: 0.95;
+    margin-bottom: 50px;
+}
+
+.scroll-down {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: background 0.3s;
+}
+
+.scroll-down:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Mission Section (Clean, White Space) */
+.mission-section {
+    padding: 140px 0;
+    background: #fff;
+}
+
+.mission-grid {
+    display: flex;
+    gap: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.mission-number {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e59325; /* Accent color matching reference */
+}
+
+.mission-text h2 {
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    color: #111;
+}
+
+.body-text {
+    font-size: 1.25rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Dark Stats Section (For Chart later) */
+.dark-stats-section {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.dark-stats-section .container {
+    background: #131313; /* Dark background matching reference */
+    border-radius: 40px;
+    padding: 80px;
+    color: #fff;
+}
+
+.stats-header {
+    margin-bottom: 80px;
+    display: flex;
+    gap: 30px;
+}
+
+.stats-label {
+    color: #888;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.stats-header h3 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    max-width: 650px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.stat-card p {
+    color: #888;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.stat-card h4 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #ddd;
+}
+
+.stat-numbers {
+    display: flex;
+    gap: 60px;
+}
+
+.highlight {
+    font-size: 4rem;
+    font-weight: 400;
+    color: #e59325; /* Yellow/Orange accent */
+    display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.highlight-yellow {
+    font-size: 4rem;
+    font-weight: 400;
+    color: #fff;
+    display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+.chart-placeholder {
+    margin-top: 60px;
+    padding-top: 60px;
+    border-top: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid #555;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.btn-outline:hover {
+    border-color: #fff;
+    background: #fff;
+    color: #111;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+/* Footer */
+footer {
+    padding: 40px 0;
+    text-align: center;
+    color: #888;
+    font-size: 0.95rem;
+    background: #fff;
+}
+
+/* Team Section */
+.team-section {
+    padding: 160px 0 100px;
+    background: #fff;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.team-header h2 {
+    font-size: 3rem;
+    font-weight: 500;
+    letter-spacing: -1.5px;
+    color: #111;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    background-color: #eee;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.team-member:hover img {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.team-member h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #111;
+}
+
+.team-member p {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+/* Responsive Constraints */
+@media (max-width: 900px) {
+    .floating-header {
+        top: 15px;
+        width: 95%;
+        padding: 10px 15px;
+    }
+    .nav-links {
+        display: none; /* Mobile menu bisa diurus nanti */
+    }
+    .hero-content h1 {
+        font-size: 20vw;
+    }
+    .mission-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .mission-text h2 {
+        font-size: 2rem;
+    }
+    .dark-stats-section .container {
+        padding: 40px 30px;
+        border-radius: 25px;
+    }
+    .stats-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .stats-header h3 {
+        font-size: 1.8rem;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .stat-numbers {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .highlight, .highlight-yellow {
+        font-size: 3rem;
+    }
+}

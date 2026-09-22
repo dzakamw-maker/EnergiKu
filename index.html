@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EnergiKu, Bumiku</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Menggunakan font Inter agar lebih mirip referensi desain modern -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar melayang (Floating pill-shaped header) -->
     <header class="floating-header">
         <div class="logo">EnergiKu</div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
         <nav>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Beranda</a></li>
@@ -23,17 +28,14 @@
     </header>
 
     <main>
-        <!-- Hero Section Full-Screen dengan Gambar Latar -->
         <section class="hero">
             <div class="hero-bg"></div>
             <div class="hero-content fade-in-up">
                 <h1>EnergiKu<br>Bumiku</h1>
-                <!-- Tagline kecil / tombol scroll -->
                 <a href="#mission" class="scroll-down">Setiap Watt Berarti &darr;</a>
             </div>
         </section>
 
-        <!-- Bagian Misi (Clean Typography) -->
         <section id="mission" class="mission-section fade-in-up">
             <div class="container">
                 <div class="mission-grid">
@@ -45,7 +47,6 @@
             </div>
         </section>
 
-        <!-- Bagian Gelap untuk Statistik / Data (Mirip kotak hitam di referensi) -->
         <section class="dark-stats-section fade-in-up">
             <div class="container">
                 <div class="stats-header">
@@ -70,7 +71,6 @@
                     </div>
                 </div>
 
-                <!-- Tempat (Placeholder) untuk Chart di Fase 2 -->
                 <div class="chart-placeholder">
                     <p style="color: #888; margin-bottom: 20px;">[ Tempat Grafik Hasil Angket (Fase 2) ]</p>
                     <a href="#" class="btn-outline">Lihat Data Angket &rarr;</a>
@@ -85,5 +85,7 @@
             <p>&copy; 2026 Kelompok 1, Jurusan PPLG.</p>
         </div>
     </footer>
+    
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -505,6 +505,125 @@ footer {
     border-left: 4px solid #4caf50;
 }
 
+/* Facts Section */
+.facts-section {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.facts-header {
+    margin-bottom: 60px;
+    text-align: left;
+}
+
+.facts-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #111;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.fact-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.fact-card h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #e59325;
+}
+
+.fact-card p.body-text {
+    font-size: 1.05rem;
+}
+
+/* Calculator CTA Section */
+.calculator-cta {
+    padding: 100px 0;
+    background: #fff;
+    text-align: center;
+}
+
+.calculator-cta .stats-label {
+    margin-bottom: 15px;
+}
+
+.calculator-cta h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.calculator-cta p.body-text {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.btn-inline {
+    display: inline-block;
+    width: auto;
+    padding: 16px 40px;
+    text-decoration: none;
+}
+
+/* Kalkulator Page Specifics */
+.page-kalkulator-section {
+    padding-top: 150px;
+    padding-bottom: 40px;
+}
+
+.kalkulator-grid {
+    max-width: 1000px;
+    gap: 40px;
+}
+
+.kalkulator-text-box {
+    flex: 1;
+}
+
+.kalkulator-text-box h2 {
+    margin-bottom: 20px;
+}
+
+.kalkulator-info-box {
+    margin-top: 40px;
+}
+
+.kalkulator-info-box h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.kalkulator-list {
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+.kalkulator-list li {
+    margin-bottom: 10px;
+}
+
+.kalkulator-info-text {
+    font-size: 1rem;
+}
+
+.kalkulator-calc-box {
+    flex: 1;
+    margin: 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
 @media (max-width: 900px) {
     .floating-header {
         top: 15px;

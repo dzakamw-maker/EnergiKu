@@ -642,6 +642,10 @@ footer {
 }
 
 @media (max-width: 900px) {
+    .hero-bg img {
+        object-position: 75% center; /* 100% (right) makes it appear on the left of the screen, so 75% pushes it to the right */
+    }
+    
     .floating-header {
         top: 15px;
         width: 95%;

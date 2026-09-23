@@ -633,6 +633,11 @@ footer {
     
     .menu-toggle {
         display: flex;
+        order: -1; /* Move hamburger to the left */
+    }
+    
+    .floating-header .logo {
+        margin: 0 auto; /* Let flexbox center it naturally between the two items */
     }
     
     .nav-links {
@@ -646,8 +651,8 @@ footer {
         background: rgba(17, 17, 17, 0.98);
         backdrop-filter: blur(20px);
         border-radius: 20px;
-        padding: 25px 0;
-        text-align: center;
+        padding: 25px 35px;
+        text-align: left;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;

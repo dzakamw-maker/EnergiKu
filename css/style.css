@@ -379,6 +379,132 @@ footer {
     transition: all 0.3s ease;
 }
 
+/* Calculator Styles */
+.calculator-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.calc-wrapper {
+    background: #f8f9fa;
+    border-radius: 30px;
+    padding: 60px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.calc-header {
+    flex: 1;
+}
+
+.calc-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.calc-box {
+    flex: 1;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.calc-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.input-group select,
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #f8f9fa;
+    transition: border-color 0.3s;
+}
+
+.input-group select:focus,
+.input-group input:focus {
+    outline: none;
+    border-color: #e59325;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: #e59325;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #cf841f;
+}
+
+.calc-result {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    animation: fadeInUp 0.5s ease;
+}
+
+.result-card {
+    margin-bottom: 15px;
+}
+
+.result-card h5 {
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: 500;
+}
+
+.res-value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #111;
+}
+
+.text-red {
+    color: #d32f2f;
+}
+
+.text-dark {
+    color: #333;
+}
+
+.calc-note {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+    background: #eaf6ea;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #4caf50;
+}
+
 @media (max-width: 900px) {
     .floating-header {
         top: 15px;
@@ -455,5 +581,17 @@ footer {
     }
     .highlight, .highlight-yellow {
         font-size: 3rem;
+    }
+    .calc-wrapper {
+        flex-direction: column;
+        padding: 30px;
+        gap: 30px;
+    }
+    .calc-box {
+        width: 100%;
+        padding: 25px;
+    }
+    .calc-header h2 {
+        font-size: 1.8rem;
     }
 }

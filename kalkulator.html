@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator - EnergiKu, Bumiku</title>
+    <link rel="icon" type="image/jpg" href="assets/favicon.jpg">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-about">
+    <header class="floating-header solid-header">
+        <div class="logo">EnergiKu</div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="kalkulator.html" class="active">Kalkulator</a></li>
+                <li><a href="developer.html">Tim</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="contact-btn">Kembali</a>
+    </header>
+
+    <main>
+        <section class="mission-section" style="padding-top: 150px; padding-bottom: 40px;">
+            <div class="container">
+                <div class="mission-grid" style="max-width: 1000px; gap: 40px;">
+                    <div class="mission-text" style="flex: 1;">
+                        <h2 style="margin-bottom: 20px;">Kalkulator Pemborosan Energi</h2>
+                        <p class="body-text">Mari kita hitung dampak kebiasaan membiarkan alat elektronik menyala saat tidak digunakan.</p>
+                        
+                        <div style="margin-top: 40px;">
+                            <h4 style="font-size: 1.2rem; margin-bottom: 10px; color: #111;">Bagaimana Cara Pakainya?</h4>
+                            <ol class="body-text" style="padding-left: 20px; margin-bottom: 30px;">
+                                <li style="margin-bottom: 10px;">Masukkan <strong>Nama Alat</strong> (misal: AC, Kipas Angin).</li>
+                                <li style="margin-bottom: 10px;">Masukkan <strong>Daya Listrik (Watt)</strong> dari alat tersebut.</li>
+                                <li style="margin-bottom: 10px;">Kira-kira berapa <strong>jam per hari</strong> alat tersebut menyala sia-sia?</li>
+                                <li style="margin-bottom: 10px;">Berapa banyak <strong>ruangan kelas</strong> yang melakukan kebiasaan ini?</li>
+                                <li style="margin-bottom: 10px;">Klik <strong>Hitung Dampaknya!</strong></li>
+                            </ol>
+
+                            <h4 style="font-size: 1.2rem; margin-bottom: 10px; color: #111;">Bagaimana Jejak Karbon Dihitung?</h4>
+                            <p class="body-text" style="font-size: 1rem;">
+                                Listrik kita di Indonesia sebagian besar berasal dari Pembangkit Listrik Tenaga Uap (PLTU) Batu Bara. 
+                                Setiap <strong>1 kWh</strong> listrik yang kamu gunakan, PLTU membuang sekitar <strong>0,8 kg Emisi Karbon (CO2)</strong> ke udara bebas.
+                                Asumsi hitungan di kalkulator ini adalah penggunaan listrik selama satu bulan penuh (<strong>30 hari/bulan</strong>) dengan tarif dasar listrik <strong>Rp 1.500/kWh</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="calc-box" style="flex: 1; margin: 0; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+                        <div class="calc-inputs">
+                            <div class="input-group">
+                                <label>Nama Alat (Opsional)</label>
+                                <input type="text" id="calc-device-name" placeholder="Misal: Kipas Angin">
+                            </div>
+                            <div class="input-group">
+                                <label>Daya Listrik (Watt)</label>
+                                <input type="number" id="calc-device-watt" value="60" min="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Lama menyala (Jam per hari)</label>
+                                <input type="number" id="calc-hours" value="2" min="1" max="24">
+                            </div>
+                            <div class="input-group">
+                                <label>Jumlah Kelas/Ruangan</label>
+                                <input type="number" id="calc-rooms" value="30" min="1">
+                            </div>
+                        </div>
+                        <button id="calc-btn" class="btn-primary">Hitung Dampaknya!</button>
+
+                        <div id="calc-result" class="calc-result" style="display: none;">
+                            <div class="result-card">
+                                <h5>Listrik Terbuang (Per Bulan)</h5>
+                                <p id="res-kwh" class="res-value">0 kWh</p>
+                            </div>
+                            <div class="result-card">
+                                <h5>Uang yang Harus Dibayar (Per Bulan)</h5>
+                                <p id="res-cost" class="res-value text-red">Rp 0</p>
+                            </div>
+                            <div class="result-card">
+                                <h5>Jejak Karbon (Per Bulan)</h5>
+                                <p id="res-carbon" class="res-value text-dark">0 kg CO2</p>
+                            </div>
+                            <p class="calc-note" id="calc-note-text">Hanya dengan mematikan alat tersebut saat tidak digunakan, kamu menyelamatkan Bumi (dan uang sekolah)! 🌱</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Kelompok 1, Jurusan PPLG.</p>
+        </div>
+    </footer>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

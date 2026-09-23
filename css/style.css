@@ -149,7 +149,7 @@ body {
     display: inline-block;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
-    color: #fff;
+    color: #000000;
     text-decoration: none;
     padding: 12px 25px;
     border-radius: 30px;

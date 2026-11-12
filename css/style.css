@@ -276,6 +276,51 @@ body {
     font-size: 0.95rem;
 }
 
+.survey-chart-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: 24px;
+    width: 100%;
+}
+
+.survey-chart-card {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: #222;
+}
+
+.survey-chart-card h4 {
+    margin-bottom: 16px;
+    color: #eee;
+}
+
+.survey-chart-canvas {
+    position: relative;
+    height: 360px;
+}
+
+.survey-doughnut {
+    height: 300px;
+}
+
+.survey-meta,
+.survey-status {
+    color: #aaa;
+    margin: 20px 0;
+}
+
+@media (max-width: 700px) {
+    .survey-chart-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .survey-chart-canvas {
+        height: 320px;
+    }
+}
+
 .chart-placeholder {
     margin-top: 60px;
     padding-top: 60px;

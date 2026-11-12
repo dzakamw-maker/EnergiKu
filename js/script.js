@@ -102,61 +102,320 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const kategori = data.ringkasan.kategori_persen;
+                const kategoriCounts = data.ringkasan.kategori || {};
+                const categoryColors = ['#e59325', '#6a9c78', '#7b8da6', '#bd6b6b'];
+                const categoryEntries = Object.entries(kategori);
 
-                new Chart(document.getElementById('category-chart'), {
+                const formatDecimal = (value, digits = 2) => new Intl.NumberFormat('id-ID', {
+                    minimumFractionDigits: digits,
+                    maximumFractionDigits: digits
+                }).format(value);
+
+                const formatDateId = isoDate => {
+                    const parsed = new Date(`${isoDate}T00:00:00`);
+                    if (Number.isNaN(parsed.getTime())) return isoDate;
+                    return new Intl.DateTimeFormat('id-ID', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric'
+                    }).format(parsed);
+                };
+
+                const hexToRgba = (hex, alpha) => {
+                    const clean = hex.replace('#', '');
+                    const r = parseInt(clean.slice(0, 2), 16);
+                    const g = parseInt(clean.slice(2, 4), 16);
+                    const b = parseInt(clean.slice(4, 6), 16);
+                    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+                };
+
+                const doughnutCenter = document.getElementById('doughnut-center');
+                const updateDoughnutCenter = activeIndex => {
+                    if (!doughnutCenter) return;
+                    const countEl = document.createElement('strong');
+                    const labelEl = document.createElement('span');
+
+                    if (activeIndex === null) {
+                        countEl.textContent = new Intl.NumberFormat('id-ID').format(data.meta.jumlah_responden);
+                        labelEl.textContent = 'responden';
+                    } else {
+                        const [name] = categoryEntries[activeIndex];
+                        const count = kategoriCounts[name] ?? 0;
+                        countEl.textContent = new Intl.NumberFormat('id-ID').format(count);
+                        labelEl.textContent = name;
+                    }
+
+                    doughnutCenter.replaceChildren(countEl, labelEl);
+                };
+                updateDoughnutCenter(null);
+
+                const categoryLegend = document.getElementById('category-legend');
+                const legendButtons = categoryEntries.map(([name, pct], index) => {
+                    const color = categoryColors[index] || '#888';
+                    const item = document.createElement('button');
+                    item.type = 'button';
+                    item.className = 'survey-legend-item';
+                    item.style.setProperty('--legend-accent', color);
+                    item.setAttribute('aria-pressed', 'false');
+
+                    const labelWrap = document.createElement('span');
+                    labelWrap.className = 'survey-legend-label';
+
+                    const dot = document.createElement('span');
+                    dot.className = 'survey-legend-dot';
+                    dot.style.backgroundColor = color;
+
+                    const text = document.createElement('span');
+                    text.textContent = name;
+
+                    const value = document.createElement('span');
+                    value.className = 'survey-legend-value';
+                    value.textContent = `${formatDecimal(pct, 1)}%`;
+
+                    labelWrap.append(dot, text);
+                    item.append(labelWrap, value);
+                    return item;
+                });
+
+                if (categoryLegend) {
+                    categoryLegend.replaceChildren(...legendButtons);
+                }
+
+                const darkTooltip = callbacks => ({
+                    backgroundColor: '#141414',
+                    borderColor: '#3a3a3a',
+                    borderWidth: 1,
+                    titleColor: '#fff',
+                    bodyColor: '#e0e0e0',
+                    callbacks
+                });
+
+                let selectedCategoryIndex = null;
+                let hoveredCategoryIndex = null;
+
+                const categoryChart = new Chart(document.getElementById('category-chart'), {
                     type: 'doughnut',
                     data: {
-                        labels: Object.keys(kategori),
+                        labels: categoryEntries.map(([name]) => name),
                         datasets: [{
-                            data: Object.values(kategori),
-                            backgroundColor: ['#e59325', '#6a9c78', '#7b8da6', '#bd6b6b']
+                            data: categoryEntries.map(([, pct]) => pct),
+                            backgroundColor: [...categoryColors],
+                            borderColor: '#222',
+                            borderWidth: 2,
+                            offset: categoryEntries.map(() => 0),
+                            hoverOffset: 6
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        plugins: {
-                            legend: { position: 'bottom' },
-                            tooltip: {
-                                callbacks: {
-                                    label: context => `${context.label}: ${context.raw}%`
-                                }
+                        cutout: '68%',
+                        layout: {
+                            padding: 22
+                        },
+                        onClick: (_event, elements) => {
+                            if (elements.length > 0) {
+                                const clickedIndex = elements[0].index;
+                                selectedCategoryIndex = selectedCategoryIndex === clickedIndex ? null : clickedIndex;
+                            } else {
+                                selectedCategoryIndex = null;
                             }
+                            syncCategoryHighlight();
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: darkTooltip({
+                                label: context => {
+                                    const name = context.label;
+                                    const count = kategoriCounts[name];
+                                    const pctText = `${formatDecimal(context.raw, 1)}%`;
+                                    return count !== undefined
+                                        ? `${name}: ${pctText} (${count} responden)`
+                                        : `${name}: ${pctText}`;
+                                }
+                            })
                         }
                     }
                 });
 
+                const syncCategoryHighlight = () => {
+                    const activeIndex = hoveredCategoryIndex !== null ? hoveredCategoryIndex : selectedCategoryIndex;
+                    const dataset = categoryChart.data.datasets[0];
+
+                    dataset.offset = categoryEntries.map((_, i) => (i === activeIndex ? 14 : 0));
+                    dataset.backgroundColor = categoryColors.map((hex, i) =>
+                        activeIndex === null || i === activeIndex ? hex : hexToRgba(hex, 0.25)
+                    );
+
+                    legendButtons.forEach((btn, i) => {
+                        const isSelected = i === selectedCategoryIndex;
+                        const isHighlighted = i === activeIndex;
+                        btn.classList.toggle('is-active', isHighlighted);
+                        btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+                    });
+
+                    updateDoughnutCenter(activeIndex);
+                    categoryChart.setActiveElements(activeIndex === null ? [] : [{ datasetIndex: 0, index: activeIndex }]);
+                    categoryChart.update();
+                };
+
+                legendButtons.forEach((btn, index) => {
+                    btn.addEventListener('click', event => {
+                        event.stopPropagation();
+                        selectedCategoryIndex = selectedCategoryIndex === index ? null : index;
+                        syncCategoryHighlight();
+                    });
+
+                    [
+                        ['mouseenter', index],
+                        ['mouseleave', null],
+                        ['focus', index],
+                        ['blur', null]
+                    ].forEach(([eventName, targetIndex]) => {
+                        btn.addEventListener(eventName, () => {
+                            hoveredCategoryIndex = targetIndex;
+                            syncCategoryHighlight();
+                        });
+                    });
+                });
+
+                const doughnutCard = document.querySelector('.survey-chart-card--doughnut');
+                if (doughnutCard) {
+                    doughnutCard.addEventListener('click', event => {
+                        if (selectedCategoryIndex === null) return;
+                        if (event.target.closest('.survey-legend-item, #category-chart')) return;
+                        selectedCategoryIndex = null;
+                        syncCategoryHighlight();
+                    });
+                }
+
+                const wrapChartLabel = (text, maxLength = 28) => {
+                    const words = String(text).split(' ');
+                    const lines = [];
+                    let currentLine = '';
+
+                    for (const word of words) {
+                        const candidate = currentLine ? `${currentLine} ${word}` : word;
+                        if (candidate.length > maxLength && currentLine) {
+                            lines.push(currentLine);
+                            currentLine = word;
+                        } else {
+                            currentLine = candidate;
+                        }
+                    }
+
+                    if (currentLine) {
+                        lines.push(currentLine);
+                    }
+
+                    return lines;
+                };
+
+                const barValueLabels = {
+                    id: 'barValueLabels',
+                    afterDatasetsDraw(chart) {
+                        const { ctx } = chart;
+                        const dataset = chart.data.datasets[0];
+                        const meta = chart.getDatasetMeta(0);
+
+                        ctx.save();
+                        ctx.font = '600 12px Inter, sans-serif';
+                        ctx.fillStyle = '#ececec';
+                        ctx.textAlign = 'left';
+                        ctx.textBaseline = 'middle';
+
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
+                            ctx.fillText(formatDecimal(value, 2), bar.x + 8, bar.y);
+                        });
+                        ctx.restore();
+                    }
+                };
+
                 new Chart(document.getElementById('item-chart'), {
                     type: 'bar',
                     data: {
-                        labels: data.per_butir.map(item => `${item.kode} — ${item.label}`),
+                        labels: data.per_butir.map(item => wrapChartLabel(item.label)),
                         datasets: [{
                             label: 'Rata-rata skor (maks. 4)',
                             data: data.per_butir.map(item => item.rata_rata),
-                            backgroundColor: '#e59325'
+                            backgroundColor: '#e59325',
+                            hoverBackgroundColor: '#f1a43c',
+                            borderRadius: 6,
+                            borderSkipped: 'left',
+                            barPercentage: 0.68,
+                            categoryPercentage: 0.84
                         }]
                     },
                     options: {
                         indexAxis: 'y',
                         responsive: true,
                         maintainAspectRatio: false,
+                        layout: {
+                            padding: { right: 32 }
+                        },
                         scales: {
+                            y: {
+                                border: { display: false },
+                                grid: { display: false },
+                                ticks: {
+                                    autoSkip: false,
+                                    crossAlign: 'near',
+                                    padding: 10,
+                                    color: '#d8d8d8',
+                                    font: {
+                                        family: 'Inter, sans-serif',
+                                        size: 12,
+                                        weight: '500'
+                                    }
+                                }
+                            },
                             x: {
                                 min: 0,
                                 max: 4,
-                                title: { display: true, text: 'Skor rata-rata' }
+                                border: { display: false },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.08)'
+                                },
+                                ticks: {
+                                    stepSize: 1,
+                                    color: '#9a9a9a',
+                                    font: {
+                                        family: 'Inter, sans-serif',
+                                        size: 11
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Skor rata-rata (skala 1–4)',
+                                    color: '#9a9a9a',
+                                    padding: { top: 8 },
+                                    font: {
+                                        family: 'Inter, sans-serif',
+                                        size: 12
+                                    }
+                                }
                             }
                         },
                         plugins: {
-                            legend: { display: false }
+                            legend: { display: false },
+                            tooltip: darkTooltip({
+                                title: items => {
+                                    const item = data.per_butir[items[0]?.dataIndex];
+                                    return item ? `${item.kode} — ${item.label}` : '';
+                                },
+                                label: context => `Rata-rata skor: ${formatDecimal(context.raw, 2)} / 4`
+                            })
                         }
-                    }
+                    },
+                    plugins: [barValueLabels]
                 });
 
                 surveyMeta.textContent =
-                    `Berdasarkan ${data.meta.jumlah_responden} responden, ` +
-                    `pengisian ${data.meta.tanggal_pengisian.awal} sampai ` +
-                    `${data.meta.tanggal_pengisian.akhir}. Sumber: ${data.meta.sumber}.`;
+                    `Berdasarkan ${new Intl.NumberFormat('id-ID').format(data.meta.jumlah_responden)} responden siswa kelas XI · ` +
+                    `Periode ${formatDateId(data.meta.tanggal_pengisian.awal)} – ` +
+                    `${formatDateId(data.meta.tanggal_pengisian.akhir)} · ` +
+                    `Sumber: Kuesioner Perilaku Hemat Energi.`;
 
                 surveyStatus.textContent = '';
             })

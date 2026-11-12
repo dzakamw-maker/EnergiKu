@@ -146,13 +146,21 @@
             <h3>Hasil Angket Perilaku Hemat Energi</h3>
 
             <div class="survey-chart-grid">
-              <article class="survey-chart-card">
+              <article class="survey-chart-card survey-chart-card--doughnut">
                 <h4>Kategori Perilaku Responden</h4>
-                <div class="survey-chart-canvas survey-doughnut">
-                  <canvas
-                    id="category-chart"
-                    aria-label="Grafik kategori perilaku responden"
-                  ></canvas>
+                <div class="survey-doughnut-wrap">
+                  <div class="survey-chart-canvas survey-doughnut">
+                    <canvas
+                      id="category-chart"
+                      aria-label="Grafik kategori perilaku responden"
+                    ></canvas>
+                    <div
+                      id="doughnut-center"
+                      class="doughnut-center"
+                      aria-hidden="true"
+                    ></div>
+                  </div>
+                  <div id="category-legend" class="survey-legend"></div>
                 </div>
               </article>
 

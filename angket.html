@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rincian hasil angket perilaku hemat energi berdasarkan data agregat siswa."
+    />
+    <title>Semua Data Angket - EnergiKu</title>
+    <link rel="icon" type="image/jpg" href="assets/favicon.jpg" />
+    <link rel="stylesheet" href="css/style.css?v=1.1" />
+    <link rel="stylesheet" href="css/angket.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="survey-detail-page">
+    <header class="floating-header solid-header">
+      <a href="index.html" class="logo">EnergiKu</a>
+      <div class="menu-toggle" id="mobile-menu" aria-label="Buka navigasi">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <nav aria-label="Navigasi utama">
+        <ul class="nav-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="kalkulator.html">Kalkulator</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="developer.html">Tim</a></li>
+        </ul>
+      </nav>
+      <a href="index.html#survey-charts" class="contact-btn">Kembali</a>
+    </header>
+
+    <main class="survey-detail-main">
+      <section class="survey-detail-hero">
+        <div class="survey-detail-container">
+          <p class="survey-eyebrow">DATA ANGKET / HASIL LENGKAP</p>
+          <h1 id="survey-title">Hasil Angket Perilaku Hemat Energi</h1>
+          <p id="survey-description" class="survey-lead">
+            Memuat ringkasan dan rincian jawaban angket.
+          </p>
+          <div class="survey-hero-meta" id="survey-hero-meta"></div>
+        </div>
+      </section>
+
+      <div class="survey-detail-container survey-content">
+        <p id="survey-error" class="survey-error" role="status" hidden></p>
+
+        <section class="detail-section" aria-labelledby="summary-heading">
+          <div class="detail-section-heading">
+            <div>
+              <p class="survey-eyebrow">01 / GAMBARAN UMUM</p>
+              <h2 id="summary-heading">Ringkasan hasil</h2>
+            </div>
+            <p id="summary-note" class="section-note"></p>
+          </div>
+          <div id="summary-metrics" class="summary-metrics"></div>
+          <div class="overview-grid">
+            <article class="detail-panel">
+              <h3>Komposisi kategori</h3>
+              <div id="category-breakdown" class="category-breakdown"></div>
+            </article>
+            <article class="detail-panel">
+              <h3>Sorotan pernyataan</h3>
+              <div id="survey-highlights" class="survey-highlights"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="detail-section" aria-labelledby="items-heading">
+          <div class="detail-section-heading">
+            <div>
+              <p class="survey-eyebrow">02 / RINCIAN INSTRUMEN</p>
+              <h2 id="items-heading">Jawaban per pernyataan</h2>
+            </div>
+            <p class="section-note">Buka rincian untuk melihat teks pertanyaan dan distribusi skor.</p>
+          </div>
+          <div id="item-breakdown" class="item-breakdown"></div>
+        </section>
+
+        <section class="detail-section" aria-labelledby="distribution-heading">
+          <div class="detail-section-heading">
+            <div>
+              <p class="survey-eyebrow">03 / SEBARAN NILAI</p>
+              <h2 id="distribution-heading">Distribusi skor total</h2>
+            </div>
+            <p class="section-note">Jumlah responden pada setiap skor total dari seluruh butir.</p>
+          </div>
+          <div class="table-scroll detail-panel">
+            <table class="survey-table score-table">
+              <thead>
+                <tr>
+                  <th scope="col">Skor total</th>
+                  <th scope="col">Jumlah responden</th>
+                  <th scope="col">Proporsi</th>
+                  <th scope="col">Sebaran</th>
+                </tr>
+              </thead>
+              <tbody id="score-distribution"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="detail-section" aria-labelledby="groups-heading">
+          <div class="detail-section-heading">
+            <div>
+              <p class="survey-eyebrow">04 / PERBANDINGAN KELOMPOK</p>
+              <h2 id="groups-heading">Rincian berdasarkan kelompok</h2>
+            </div>
+            <p class="section-note">Setiap rincian mencakup kategori dan rerata untuk seluruh butir.</p>
+          </div>
+          <div id="group-breakdowns" class="group-breakdowns"></div>
+        </section>
+
+        <section class="detail-section" aria-labelledby="method-heading">
+          <div class="detail-section-heading">
+            <div>
+              <p class="survey-eyebrow">05 / METODOLOGI</p>
+              <h2 id="method-heading">Cakupan dan pengolahan data</h2>
+            </div>
+          </div>
+          <div id="survey-method" class="method-grid"></div>
+        </section>
+
+        <div class="survey-return">
+          <a href="index.html#survey-charts" class="btn-outline">Kembali ke grafik angket &larr;</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 Kelompok 1, Jurusan PPLG.</p>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/angket.js"></script>
+  </body>
+</html>

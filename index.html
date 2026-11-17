@@ -42,7 +42,7 @@
         </div>
         <div class="hero-content fade-in-up">
           <h1>Bijak Energi<br />Lestari Bumi</h1>
-          <a href="#mission" class="scroll-down">Setiap Watt Berarti &darr;</a>
+          <a href="#mission" class="scroll-down" style="display: inline-flex; align-items: center; gap: 6px;">Setiap Watt Berarti <i data-lucide="arrow-down" style="width: 16px; height: 16px;"></i></a>
         </div>
       </section>
 
@@ -71,6 +71,7 @@
           </div>
           <div class="facts-grid">
             <div class="fact-card">
+              <div class="fact-icon"><i data-lucide="plug-zap"></i></div>
               <h4>Konsumsi Daya Terselubung</h4>
               <p class="body-text">
                 Perangkat elektronik yang <em>telah dinonaktifkan</em>, namun
@@ -84,6 +85,7 @@
               </p>
             </div>
             <div class="fact-card">
+              <div class="fact-icon"><i data-lucide="receipt"></i></div>
               <h4>Akumulasi Beban Biaya</h4>
               <p class="body-text">
                 Penggunaan pendingin ruangan (AC) secara tidak efisien, seperti
@@ -96,6 +98,7 @@
               </p>
             </div>
             <div class="fact-card">
+              <div class="fact-icon"><i data-lucide="factory"></i></div>
               <h4>Dampak Lingkungan Tidak Langsung</h4>
               <p class="body-text">
                 Meskipun pemanfaatan listrik oleh konsumen pada titik akhir
@@ -178,8 +181,8 @@
             <p id="survey-meta" class="survey-meta"></p>
             <p id="survey-status" class="survey-status" aria-live="polite"></p>
 
-            <a href="angket.html" class="btn-outline"
-              >Lihat Semua Data Angket &rarr;</a
+            <a href="angket.html" class="btn-outline" style="display: inline-flex; align-items: center; gap: 8px;"
+              >Lihat Semua Data Angket <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></a
             >
           </div>
         </div>
@@ -193,8 +196,8 @@
             Coba hitung dampaknya jika kita membiarkan alat elektronik menyala
             sia-sia di kelasmu. Angkanya mungkin akan mengejutkanmu!
           </p>
-          <a href="kalkulator.html" class="btn-primary btn-inline"
-            >Coba Kalkulator Sekarang &rarr;</a
+          <a href="kalkulator.html" class="btn-primary btn-inline" style="display: inline-flex; align-items: center; gap: 8px;"
+            >Coba Kalkulator Sekarang <i data-lucide="calculator" style="width: 16px; height: 16px;"></i></a
           >
         </div>
       </section>
@@ -206,8 +209,8 @@
           <p class="body-text" style="color: #c5c7be; margin-bottom: 28px; font-size: 1.05rem;">
             Data sudah berbicara, kalkulator sudah membuktikan. Sekarang saatnya ambil peran nyata lewat 4 rekomendasi konkret dan ikuti Tantangan 7 Hari Hemat Energi.
           </p>
-          <a href="aksi.html" class="btn-primary btn-inline">
-            Buka Halaman Aksi & Ikrar Siswa &rarr;
+          <a href="aksi.html" class="btn-primary btn-inline" style="display: inline-flex; align-items: center; gap: 8px;">
+            Buka Halaman Aksi & Ikrar Siswa <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
           </a>
         </div>
       </section>
@@ -219,6 +222,11 @@
       </div>
     </footer>
 
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
     <script src="js/script.js"></script>
   </body>

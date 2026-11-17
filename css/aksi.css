@@ -816,3 +816,46 @@
         padding: 24px 18px;
     }
 }
+
+/* ==========================================================================
+   Lucide Icons Custom Adjustments
+   ========================================================================== */
+.action-chip i,
+.action-chip svg {
+    width: 15px;
+    height: 15px;
+    color: #e59325;
+}
+
+.rec-bullet i,
+.rec-bullet svg {
+    width: 12px;
+    height: 12px;
+    stroke-width: 2.5px;
+    display: inline-flex;
+}
+
+.rec-executor i,
+.rec-executor svg {
+    width: 15px;
+    height: 15px;
+    color: #5c6056;
+}
+
+.challenge-congrats i,
+.challenge-congrats svg {
+    width: 20px;
+    height: 20px;
+    color: #e59325;
+    flex-shrink: 0;
+}
+
+.action-bridge-card h4 i,
+.action-bridge-card h4 svg {
+    width: 20px;
+    height: 20px;
+    color: #e59325;
+    vertical-align: -3px;
+    margin-right: 6px;
+}
+

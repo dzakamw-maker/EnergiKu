@@ -920,3 +920,33 @@ footer {
         font-size: 1.8rem;
     }
 }
+
+/* ==========================================================================
+   Lucide Icons Global Helper
+   ========================================================================== */
+.lucide {
+    width: 1.15em;
+    height: 1.15em;
+    vertical-align: -0.18em;
+    display: inline-block;
+}
+
+.fact-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #fff8eb;
+    color: #e59325;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 1px solid #ffe8cc;
+}
+
+.fact-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 2.2px;
+}
+

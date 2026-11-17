@@ -75,25 +75,27 @@
                                 <input type="number" id="calc-rooms" value="30" min="1">
                             </div>
                         </div>
-                        <button id="calc-btn" class="btn-primary">Hitung Dampaknya!</button>
+                        <button id="calc-btn" class="btn-primary" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                            <i data-lucide="calculator" style="width: 18px; height: 18px;"></i> Hitung Dampaknya!
+                        </button>
 
                         <div id="calc-result" class="calc-result" style="display: none;">
                             <div class="result-card">
-                                <h5>Listrik Terbuang (Per Bulan)</h5>
+                                <h5><i data-lucide="zap" style="width: 16px; height: 16px; vertical-align: -2px; margin-right: 4px; color: #e59325;"></i> Listrik Terbuang (Per Bulan)</h5>
                                 <p id="res-kwh" class="res-value">0 kWh</p>
                             </div>
                             <div class="result-card">
-                                <h5>Uang yang Harus Dibayar (Per Bulan)</h5>
+                                <h5><i data-lucide="receipt" style="width: 16px; height: 16px; vertical-align: -2px; margin-right: 4px; color: #e03131;"></i> Uang yang Harus Dibayar (Per Bulan)</h5>
                                 <p id="res-cost" class="res-value text-red">Rp 0</p>
                             </div>
                             <div class="result-card">
-                                <h5>Jejak Karbon (Per Bulan)</h5>
+                                <h5><i data-lucide="cloud" style="width: 16px; height: 16px; vertical-align: -2px; margin-right: 4px; color: #495057;"></i> Jejak Karbon (Per Bulan)</h5>
                                 <p id="res-carbon" class="res-value text-dark">0 kg CO2</p>
                             </div>
                             <p class="calc-note" id="calc-note-text">Hanya dengan mematikan alat tersebut saat tidak digunakan, kamu menyelamatkan Bumi (dan uang sekolah)! 🌱</p>
                             <div style="margin-top: 22px; text-align: center;">
-                                <a href="aksi.html" class="btn-primary btn-inline">
-                                    Ambil Langkah Penghematan di Halaman Aksi &rarr;
+                                <a href="aksi.html" class="btn-primary btn-inline" style="display: inline-flex; align-items: center; gap: 8px;">
+                                    Ambil Langkah Penghematan di Halaman Aksi <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
                                 </a>
                             </div>
                         </div>
@@ -109,6 +111,11 @@
         </div>
     </footer>
     
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>

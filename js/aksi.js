@@ -208,7 +208,7 @@ function initPledgeGenerator() {
             <div class="pledge-card fade-in">
                 <span class="pledge-card-badge-seal">Agen Resmi</span>
                 <div class="pledge-card-header">
-                    <div class="pledge-card-logo">🌱 EnergiKu</div>
+                    <div class="pledge-card-logo"><i data-lucide="leaf" style="width: 18px; height: 18px; vertical-align: -3px; margin-right: 4px; color: #4ade80;"></i> EnergiKu</div>
                     <div class="pledge-card-serial">ID: ${escapeHtml(data.serial)}</div>
                 </div>
 
@@ -227,12 +227,16 @@ function initPledgeGenerator() {
 
                 <div class="pledge-card-footer">
                     <span>Terdaftar: ${escapeHtml(data.date)}</span>
-                    <button id="btn-edit-pledge" class="btn-reset-challenge" style="color: #cbd0c4; border-color: rgba(255,255,255,0.2);">
-                        Ganti Komitmen
+                    <button id="btn-edit-pledge" class="btn-reset-challenge" style="color: #cbd0c4; border-color: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 4px;">
+                        <i data-lucide="edit-3" style="width: 13px; height: 13px;"></i> Ganti Komitmen
                     </button>
                 </div>
             </div>
         `;
+
+        if (window.lucide) {
+            lucide.createIcons();
+        }
 
         // Pasang event listener untuk ganti komitmen
         const editBtn = document.getElementById('btn-edit-pledge');
